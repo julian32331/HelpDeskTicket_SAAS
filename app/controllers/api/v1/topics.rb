@@ -1,3 +1,4 @@
+require 'will_paginate/array'
 module API
   module V1
     class Topics < Grape::API
