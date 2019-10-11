@@ -11,7 +11,7 @@ gem 'sass-rails', '~> 5.0.7'
 gem 'uglifier', '>= 1.3.0'
 
 # Explicitly include Nokogiri to control version
-gem 'nokogiri', '>= 1.10.4'
+gem 'nokogiri', '>= 1.8.4'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -156,7 +156,7 @@ gem 'best_in_place', '~> 3.1'
 # Add onboarding component
 gem 'helpy_onboarding', git: 'https://github.com/helpyio/helpy_onboarding', branch: 'master'
 gem 'helpy_imap', git: 'https://github.com/helpyio/helpy_imap', branch: 'master'
-gem 'will_paginate'
+
 group :development, :test do
   # Audit Gemfile for security vulnerabilities
   gem 'bundler-audit', require: false
@@ -174,7 +174,6 @@ end
 
 gem 'bulk_insert'
 gem 'roo'
-gem 'ancestry'
 
 group :development do
   gem "better_errors"
@@ -190,7 +189,6 @@ end
 group :test do
   gem 'minitest'
   gem 'minitest-reporters'
-  gem 'minitest-retry'
   gem 'shoulda', '3.5' # Required for minitest
   gem 'shoulda-matchers', '~> 2.0'  # Required for minitest
   gem 'factory_bot_rails'

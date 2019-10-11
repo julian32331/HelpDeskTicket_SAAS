@@ -26,9 +26,7 @@ class CategoriesController < ApplicationController
   theme :theme_chosen
 
   def index
-    # @categories = Category.publicly.active.ordered.with_translations(I18n.locale).includes(docs: :tags )
-    @categories = Category.publicly.roots.active.ordered.featured.all.with_translations(I18n.locale).includes(docs: :tags )
-
+    @categories = Category.publicly.active.ordered.with_translations(I18n.locale).includes(docs: :tags )
     @page_title = I18n.t :knowledgebase, default: "Knowledgebase"
     add_breadcrumb @page_title, categories_path
   end
@@ -41,15 +39,12 @@ class CategoriesController < ApplicationController
       else
         @docs = @category.docs.ordered.active.page(params[:page]).includes(:tags)
       end
-      @categories = Category.publicly.roots.active.ordered.with_translations(I18n.locale)
+      @categories = Category.publicly.active.ordered.with_translations(I18n.locale)
       @related = Doc.in_category(@doc.category_id) if @doc
 
       @page_title = @category.name
-
       add_breadcrumb t(:knowledgebase, default: "Knowledgebase"), categories_path
-      @category.path.each do |cat|
-        add_breadcrumb cat.name, category_path(cat)
-      end
+      add_breadcrumb @page_title, category_path(@category)
     else
       redirect_to controller: 'errors', action: 'not_found'
     end

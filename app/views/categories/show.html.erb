@@ -19,8 +19,9 @@
     <div class="row">
       <div class="col-md-9">
         <ul class='list-unstyled'>
-          <%= render partial: 'categories/category', collection: Category.children_of(@category).publicly.active.ordered.with_translations(I18n.locale).all %>
-          <%= render partial: 'docs/doc', collection: @docs %>
+          <% @docs.each do |doc| %>
+              <%= render ("docs/doc"), doc: doc %>
+          <% end %>
           <% if @docs.count == 0 %>
 
             <div class="text-center verticalness">
