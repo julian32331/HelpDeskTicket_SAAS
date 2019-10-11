@@ -13,7 +13,7 @@ module API
       resource :users, desc: "View and edit users" do
 
         # throttle max: 200, per: 1.minute
-        Product.all.paginate per_page: 20
+        paginate per_page: 20
 
         # LIST ALL USERS
         desc "List all users", {
